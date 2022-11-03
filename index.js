@@ -13,7 +13,7 @@ app.listen(5000, () => {
 });
 
 app.get("/tweets", (_req, res) => {
-    const tweets = TWEETS.slice(TWEETS.length - 10);
+    const tweets = TWEETS.slice(Math.max(TWEETS.length - 10, 0));
     res.status(200).send(tweets);
 });
 
