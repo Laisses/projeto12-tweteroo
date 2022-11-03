@@ -12,8 +12,12 @@ app.listen(5000, () => {
     console.log("server running");
 });
 
-app.get("/tweets", (_req, res) => {
-    const tweets = TWEETS.slice(Math.max(TWEETS.length - 10, 0));
+app.get("/tweets", (req, res) => {
+    const page = req.query.page;
+    const limit = 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const tweets = TWEETS.slice(startIndex, endIndex);
     res.status(200).send(tweets);
 });
 
