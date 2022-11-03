@@ -31,6 +31,7 @@ app.post("/sign-up", (req, res) => {
 
 app.post("/tweets", (req, res) => {
     const {username, tweet} = req.body;
-    TWEETS.push({username, tweet});
+    const avatar = USERS[username];
+    TWEETS.push({username, tweet, avatar});
     res.status(201).send("OK");
 });
