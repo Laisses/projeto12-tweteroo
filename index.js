@@ -14,6 +14,10 @@ app.listen(5000, () => {
 
 app.get("/tweets", (req, res) => {
     const page = req.query.page;
+    if (page < 1) {
+        res.status(400).send("Informe uma página válida!");
+        return;
+    }
     const limit = 10;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
