@@ -50,6 +50,12 @@ app.post("/sign-up", (req, res) => {
 app.post("/tweets", (req, res) => {
     const username = req.headers.user;
     const { tweet } = req.body;
+
+    if (username.length === 0 || tweet.length === 0) {
+        res.status(400).send("Todos os campos são obrigatórios!");
+        return;
+    }
+
     const avatar = USERS[username];
     TWEETS.unshift({username, tweet, avatar});
     res.status(201).send("OK");
