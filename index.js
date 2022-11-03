@@ -26,5 +26,5 @@ app.get("/tweets/:user", (req, res) => {
 app.post("/sign-up", (req, res) => {
     const {username, imageURL} = req.body;
     USERS[username] = imageURL;
-    res.sendStatus(201);
+    res.status(201).send("OK");
 });
