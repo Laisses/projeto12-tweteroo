@@ -14,3 +14,9 @@ app.get("/tweets", (_req, res) => {
     const tweets = TWEETS.slice(TWEETS.length - 10);
     res.status(200).send(tweets);
 });
+
+app.get("/tweets/:user", (req, res) => {
+    const { user } = req.params;
+    const tweetsUser = TWEETS.filter(t => user === t.username);
+    res.status(200).send(tweetsUser);
+})
