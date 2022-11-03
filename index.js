@@ -33,6 +33,6 @@ app.post("/tweets", (req, res) => {
     const { username } = req.headers;
     const { tweet } = req.body;
     const avatar = USERS[username];
-    TWEETS.push({username, tweet, avatar});
+    TWEETS.unshift({username, tweet, avatar});
     res.status(201).send("OK");
 });
