@@ -30,7 +30,7 @@ app.post("/sign-up", (req, res) => {
 });
 
 app.post("/tweets", (req, res) => {
-    const { username } = req.headers;
+    const username = req.headers.user;
     const { tweet } = req.body;
     const avatar = USERS[username];
     TWEETS.unshift({username, tweet, avatar});
