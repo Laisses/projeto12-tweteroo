@@ -1,16 +1,8 @@
-export const USERS = [
-    {
-        username: "Girls' Own advice",
-        avatar: "https://pbs.twimg.com/profile_images/436035798132338688/6JJnj8ka_400x400.jpeg",
-    },
-    {
-        username: "Martin_Luther_King",
-        avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/800px-Martin_Luther_King%2C_Jr..jpg",
-    },{
-        username: "Tweets of Old",
-        avatar: "https://pbs.twimg.com/profile_images/1352720777028788226/SrvPvvBY_400x400.jpg",
-    }
-];
+export const USERS = {
+    "Girls' Own advice": "https://pbs.twimg.com/profile_images/436035798132338688/6JJnj8ka_400x400.jpeg",
+    "Martin_Luther_King": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Martin_Luther_King%2C_Jr..jpg/800px-Martin_Luther_King%2C_Jr..jpg",
+    "Tweets of Old": "https://pbs.twimg.com/profile_images/1352720777028788226/SrvPvvBY_400x400.jpg",
+};
 
 export const TWEETS = [
     {
@@ -33,4 +25,4 @@ export const TWEETS = [
         username: "Tweets of Old",
         tweet: "A kitten with two heads was born in a Charles street stable this week. The little monstrosity was perfect in all other particulars.",
     },
-];
+].map(tweet => ({ ...tweet, avatar: USERS[tweet.username]}));
