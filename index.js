@@ -24,7 +24,13 @@ app.get("/tweets/:user", (req, res) => {
 });
 
 app.post("/sign-up", (req, res) => {
-    const {username, imageURL} = req.body;
-    USERS[username] = imageURL;
+    const {username, avatar} = req.body;
+    USERS[username] = avatar;
+    res.status(201).send("OK");
+});
+
+app.post("/tweets", (req, res) => {
+    const {username, tweet} = req.body;
+    TWEETS.push({username, tweet});
     res.status(201).send("OK");
 });
