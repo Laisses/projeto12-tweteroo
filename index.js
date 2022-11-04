@@ -35,10 +35,15 @@ app.post("/sign-up", (req, res) => {
     const {username, avatar} = req.body;
     const regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
 
+    if (!username || !avatar) {
+        res.status(400).send("Todos os campos são obrigatórios!");
+        return;
+    }
     if (username.length === 0 || avatar.length === 0) {
         res.status(400).send("Todos os campos são obrigatórios!");
         return;
-    } else if (!regex.test(avatar)) {
+    }
+    if (!regex.test(avatar)) {
         res.status(400).send("A foto deve ser uma URL!");
         return;
     }
@@ -51,6 +56,10 @@ app.post("/tweets", (req, res) => {
     const username = req.headers.user;
     const { tweet } = req.body;
 
+    if (!username || !tweet) {
+        res.status(400).send("Todos os campos são obrigatórios!");
+        return;
+    }
     if (username.length === 0 || tweet.length === 0) {
         res.status(400).send("Todos os campos são obrigatórios!");
         return;
